@@ -1,0 +1,96 @@
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv
+.env
+.conda
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Testing
+.pytest_cache/
+.coverage
+coverage.xml
+*.cover
+.hypothesis/
+htmlcov/
+
+# Data (keep processed, exclude raw)
+data/raw/
+data/processed/*.parquet
+data/processed/*.csv
+*.csv
+!ai_job_replacement_2020_2026.csv
+
+# Models (too large)
+models/trained_models/*.pkl
+models/trained_models/*.h5
+models/**/*.pkl
+*.joblib
+
+# Logs
+logs/
+*.log
+
+# Output files
+*.txt
+!requirements.txt
+!setup.py
+reports/figures/
+*.png
+*.jpg
+*.pdf
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*.ipynb
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+.DS_Store
+
+# OS
+Thumbs.db
+.Directory
+
+# Project-specific
+config/local_config.py
+.mypy_cache/
+.dmypy.json
+dmypy.json

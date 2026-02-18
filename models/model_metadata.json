@@ -1,0 +1,18 @@
+{
+  "model_type": "GradientBoosting",
+  "best_r2": 0.9274487064389232,
+  "best_rmse": 6.006980989923877,
+  "n_features": 13,
+  "n_samples": 15000,
+  "training_date": "2026-02-18T06:41:42.497621",
+  "all_results": {
+    "RandomForest": {
+      "r2": 0.9273528340800766,
+      "rmse": 6.010948619435241
+    },
+    "GradientBoosting": {
+      "r2": 0.9274487064389232,
+      "rmse": 6.006980989923877
+    }
+  }
+}

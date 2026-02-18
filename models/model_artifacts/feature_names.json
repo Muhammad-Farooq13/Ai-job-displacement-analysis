@@ -1,0 +1,15 @@
+[
+  "job_role",
+  "industry",
+  "country",
+  "year",
+  "automation_risk_percent",
+  "skill_gap_index",
+  "salary_before_usd",
+  "salary_after_usd",
+  "salary_change_percent",
+  "skill_demand_growth_percent",
+  "remote_feasibility_score",
+  "ai_adoption_level",
+  "education_requirement_level"
+]
