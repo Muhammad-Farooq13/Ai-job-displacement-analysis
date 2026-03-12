@@ -12,7 +12,7 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import Ridge, Lasso, LinearRegression
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.model_selection import KFold, cross_validate
 import xgboost as xgb
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
@@ -37,6 +37,12 @@ class ModelTrainer:
         self.cv_results = None
         self.training_history = {}
         self.feature_importance = None
+
+    def train_baseline_model(self, X_train, y_train):
+        """Train a baseline RandomForestClassifier."""
+        clf = RandomForestClassifier(n_estimators=10, random_state=42)
+        clf.fit(X_train, y_train)
+        return clf
     
     def build_model(self, params: Optional[Dict] = None) -> Any:
         """

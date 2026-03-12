@@ -108,9 +108,27 @@ class FeatureEngineer:
                 df['skill_gap_index'] / df['education_requirement_level'].replace(0, 1)
             )
             logger.info("  Created: education_adjusted_gap")
+
+        # Risk exposure: combined automation risk and AI adoption
+        if 'automation_risk_percent' in df.columns and 'ai_adoption_level' in df.columns:
+            df['risk_exposure'] = df['automation_risk_percent'] * df['ai_adoption_level']
+            logger.info("  Created: risk_exposure")
+
+        # Education barrier: education level scaled by skill gap
+        if 'education_requirement_level' in df.columns and 'skill_gap_index' in df.columns:
+            df['education_barrier'] = df['education_requirement_level'] * df['skill_gap_index']
+            logger.info("  Created: education_barrier")
         
         return df
     
+    def create_temporal_features(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Create temporal features based on year."""
+        df = df.copy()
+        if 'year' in df.columns:
+            df['time_since_2020'] = df['year'] - 2020
+            logger.info("  Created: time_since_2020")
+        return df
+
     def create_aggregate_features(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         Create aggregate features at industry and country level.

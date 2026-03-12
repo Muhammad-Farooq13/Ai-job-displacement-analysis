@@ -50,7 +50,7 @@ class DataValidator:
         # Check columns exist
         missing_cols = set(cls.EXPECTED_COLUMNS.keys()) - set(df.columns)
         if missing_cols:
-            raise ValueError(f"Missing columns: {missing_cols}")
+            raise ValueError(f"Missing required columns: {missing_cols}")
         
         # Check data types
         for col, expected_dtype in cls.EXPECTED_COLUMNS.items():
@@ -62,7 +62,7 @@ class DataValidator:
                 try:
                     df[col] = df[col].astype(expected_dtype)
                 except Exception as e:
-                    raise ValueError(f"Cannot convert column '{col}': {e}")
+                    raise ValueError(f"Schema validation failed for column '{col}': {e}")
         
         logger.info(f"✓ Schema validation passed for {len(df)} records")
         return True
@@ -156,6 +156,12 @@ class DataLoader:
             raise
         
         return self.df
+
+    def load_raw_data(self, path: Optional[str] = None) -> pd.DataFrame:
+        """Load raw data from given path (alias for load_data with optional path override)."""
+        if path is not None:
+            self.data_path = Path(path)
+        return self.load_data()
     
     def validate(self) -> bool:
         """

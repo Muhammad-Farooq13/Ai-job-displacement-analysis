@@ -257,16 +257,27 @@ class DataPreprocessor:
         logger.info("✓ Preprocessing applied to new data")
         return df
     
+    def split_data(
+        self,
+        df: pd.DataFrame,
+        test_size: float = 0.3,
+        random_state: int = 42,
+    ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
+        """Split DataFrame into train/test X/y using Config.TARGET_VARIABLE."""
+        X = df.drop([Config.TARGET_VARIABLE, Config.ID_COLUMN], axis=1, errors="ignore")
+        y = df[Config.TARGET_VARIABLE]
+        return train_test_split(X, y, test_size=test_size, random_state=random_state)
+
     def fit_transform_split(
         self, df: pd.DataFrame, test_size: float = 0.3
     ) -> Tuple[pd.DataFrame, pd.DataFrame]:
         """
         Preprocess and split data into train and test sets.
-        
+
         Args:
             df: DataFrame to preprocess and split
             test_size: Proportion for test set
-            
+
         Returns:
             Tuple[pd.DataFrame, pd.DataFrame]: Train and test DataFrames
         """
